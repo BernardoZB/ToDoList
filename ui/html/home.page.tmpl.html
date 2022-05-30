@@ -1,5 +1,37 @@
 {{template "base" .}}
 {{define "title"}} Home {{end}}
 {{define "body"}}
+  <h2>O que vamos fazer</h2>
 
+  <form action="/salvar" method="post">
+    <input type="text" name="title" placeholder="Tarefa">
+    <br><br>
+    <textarea name="content" placeholder="Descrição" style="white-space: pre-wrap"></textarea>
+    <br><br>
+    <input type="submit" name="submit" value="Criar">
+  </form>
+  <br><br>
+  <h2>Últimas Tarefas:</h2>
+  {{if .}}
+    {{range .}}
+      <table>
+        <tr>
+          <th>
+            <input type="checkbox"><a href="/snippet?id={{.ID}}"> {{.Title}}</a></input>
+            <form action="/excluir" method="post">
+              <button type="submit" name="excluir" value="{{.ID}}">Excluir</button>
+            </form>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            {{.Content}}
+          </td>
+        </tr>
+      </table>
+      <br>
+    {{end}}
+  {{else}}
+    <p>Nenhuma tarefa no momento ...</p>
+  {{end}}
 {{end}}
