@@ -31,7 +31,6 @@ section {
 h1 a {
     font-size: 36px;
     font-weight: bold;
-    background-image: url("/static/img/logo.png");
     background-repeat: no-repeat;
     background-position: 0px 0px;
     height: 36px;
@@ -49,15 +48,16 @@ h2 {
     margin-bottom: 36px;
     position: relative;
     top: -9px;
+  color: #00FF7F;
 }
 
 a {
-    color: #62CB31;
+    color: black;
     text-decoration: none;
 }
 
 a:hover {
-    color: #4EB722;
+    color: black;
     text-decoration: underline;
 }
 
@@ -140,7 +140,6 @@ nav a.live:after {
 
 a.button, input[type="submit"] {
     background-color: #62CB31;
-    border-radius: 3px;
     color: #FFFFFF;
     padding: 18px 27px;
     border: none;
@@ -176,8 +175,8 @@ form input[type="text"], form input[type="password"], form input[type="email"] {
 }
 
 form input[type=text], form input[type="password"], form input[type="email"], textarea {
-    color: #6A6C6F;
-    background: #FFFFFF;
+    color: black;
+    background: #cfcfcf;
     border: 1px solid #E4E5E7;
     border-radius: 3px;
 }
@@ -284,6 +283,8 @@ table {
 
 td, th {
     padding: 9px 18px;
+    background: #cfcfcf;
+
 }
 
 th:last-child {
@@ -308,7 +309,7 @@ footer {
     border-top: 1px solid #E4E5E7;
     padding-top: 17px;
     padding-bottom: 15px;
-    background: #F7F9FA;
+    background: #5c5c5c;
     height: 60px;
     color: #6A6C6F;
     text-align: center;

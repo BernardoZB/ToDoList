@@ -1,0 +1,32 @@
+.cabecalho{
+  border-bottom: 0px;
+  
+}
+.criar{
+  border-radius : 15px !important;
+}
+.logo{
+  width: 60px;
+  margin-bottom: -20px;
+  margin-right: -45px;
+}
+.titulo {
+  color: #00FF7F;
+}
+.titulo:hover {
+  color: #00FF7F;
+}
+body{
+  background-color: #5c5c5c
+}
+.excluir{
+  width:23px;
+    position: absolute;
+    margin-top: -13px;
+    margin-left: 370px;
+}
+footer{
+  background: #5c5c5c !important;
+  border-top: 0px solid #E4E5E7 !important;
+  color: black;
+}

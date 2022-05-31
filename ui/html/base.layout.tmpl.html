@@ -7,18 +7,19 @@
     <title>{{template "title" .}} - TDL</title>
     <!-- Link to the CSS stylesheet and favicon -->
     <link rel='stylesheet' href='static/css/style.css'>
-    <link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'>
+    <link rel='stylesheet' href='static/css/custom.css'>
+    <link rel='shortcut icon' href='/static/img/favicon.png' type='image/x-icon'>
     <!-- Also link to some fonts hosted by Google -->
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'>
 </head>
 
 <body>
-    <header>
-        <h1><a href='/'>To Do List</a></h1>
+    <header class="cabecalho">
+      <h1>
+        <img class="logo" src="/static/img/favicon.png" alt="logo">
+        <a href='/' class="titulo">To Do List</a>
+      </h1>
     </header>
-    <nav>
-        <a href='/'>Home</a>
-    </nav>
     <section>
         {{template "body" .}}
     </section>
