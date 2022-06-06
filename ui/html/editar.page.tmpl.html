@@ -1,0 +1,15 @@
+{{template "base" .}}
+{{define "title"}} A fazer {{.ID}} {{end}}
+
+{{define "body"}}
+  <div class="snippet">
+    <div class="metadata">
+      <form action="/editarValidate?id={{.ID}}" method="post">
+        <input type="text" name="title" value="{{.Title}}">
+        <span>#{{.ID}}</span>
+        <textarea name="content" style="white-space: pre-wrap">{{.Content}}</textarea>
+        <input type="submit" class="button" name="submit" value="Salvar">
+      </form>
+    </div>
+  </div>
+{{end}}

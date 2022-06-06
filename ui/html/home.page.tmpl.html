@@ -8,19 +8,24 @@
     <br><br>
     <textarea name="content" placeholder="Descrição" style="white-space: pre-wrap"></textarea>
     <br><br>
-    <input type="submit" class="criar" name="submit" value="Criar">
+    <input type="submit" class="button" name="submit" value="Criar">
   </form>
   <br><br>
   <h2>Últimas Tarefas:</h2>
   {{if .}}
     {{range .}}
-      <table>
+      <table >
         <tr>
           <th>
-            <input type="checkbox"><a href="/snippet?id={{.ID}}"> {{.Title}}</a></input>
+            <h3 class="tarefa">{{.Title}}</h3>
             <form action="/excluir" method="post">
               <button type="submit" name="excluir" value="{{.ID}}" class="excluir">
                 <img class="excluir" src="/static/img/lixeira.png" alt="">
+              </button>
+            </form>
+            <form action="/editar?id={{.ID}}" method="post">
+              <button type="submit" name="editar" class="editar">
+                <img class="editar" src="/static/img/editar.png" alt="">
               </button>
             </form>
           </th>

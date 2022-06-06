@@ -2,7 +2,7 @@
   border-bottom: 0px;
   
 }
-.criar{
+.button{
   border-radius : 15px !important;
 }
 .logo{
@@ -10,19 +10,25 @@
   margin-bottom: -20px;
   margin-right: -45px;
 }
-.titulo {
-  color: #00FF7F;
-}
-.titulo:hover {
-  color: #00FF7F;
-}
-
 .excluir{
   width:23px;
     position: absolute;
     margin-top: -13px;
     margin-left: 370px;
 }
-footer{
-
+.editar{
+  width:23px;
+  position: absolute;
+  margin-top: -13px;
+  margin-left: 350px;
+}
+.marcado{
+  text-decoration-line: line-through !important;
+}
+.inputentrar{
+   border: 1px black solid !important; 
+}
+.tarefa{
+  color: black;
+  text-decoration: none;
 }
