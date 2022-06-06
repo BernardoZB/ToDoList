@@ -8,7 +8,8 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("/", app.home)
 	mux.HandleFunc("/salvar", app.salvar)
 	mux.HandleFunc("/excluir", app.excluir)
-	mux.HandleFunc("/tarefa", app.mostrarTarefa)
+	mux.HandleFunc("/editar", app.editarTarefaPag)
+	mux.HandleFunc("/editarValidate", app.editarTarefa)
 	fileServer := http.FileServer(http.Dir("./ui/static/"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
