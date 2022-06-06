@@ -16,9 +16,7 @@
 .titulo:hover {
   color: #00FF7F;
 }
-body{
-  background-color: #5c5c5c
-}
+
 .excluir{
   width:23px;
     position: absolute;
@@ -26,7 +24,5 @@ body{
     margin-left: 370px;
 }
 footer{
-  background: #5c5c5c !important;
-  border-top: 0px solid #E4E5E7 !important;
-  color: black;
+
 }

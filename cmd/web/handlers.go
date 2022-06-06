@@ -2,17 +2,17 @@ package main
 
 import (
 	"html/template"
+	"main/pkg/models"
 	"net/http"
 	"strconv"
-	"main/pkg/models"
 )
 
 func (app *application) home(rw http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
+  if r.URL.Path != "/" {
 		app.notFound(rw)
 		return
 	}
-
+  
   snippets, err := app.snippets.Latest()
   if err != nil{
     app.serverError(rw, err)
@@ -37,7 +37,26 @@ func (app *application) home(rw http.ResponseWriter, r *http.Request) {
 
 }
 
-func (app *application) mostrarTarefa(rw http.ResponseWriter, r *http.Request) {
+func (app *application) salvar(rw http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		rw.Header().Set("Allow", "POST")
+		app.clientError(rw, http.StatusMethodNotAllowed)
+		return
+	}
+
+	title := r.FormValue("title")
+	content := r.FormValue("content")
+  
+  _, err := app.snippets.Insert(title, content)
+	if err != nil {
+		app.serverError(rw, err)
+		return
+	}
+
+	http.Redirect(rw, r, "/", http.StatusSeeOther)
+}
+
+func (app *application) editarTarefaPag(rw http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil || id < 1 {
 		app.notFound(rw)
@@ -54,7 +73,7 @@ func (app *application) mostrarTarefa(rw http.ResponseWriter, r *http.Request) {
   }
   
   files := []string{
-		"./ui/html/show.page.tmpl.html",
+		"./ui/html/editar.page.tmpl.html",
 		"./ui/html/base.layout.tmpl.html",
 		"./ui/html/footer.partial.tmpl.html",
 	}
@@ -68,27 +87,6 @@ func (app *application) mostrarTarefa(rw http.ResponseWriter, r *http.Request) {
 		app.serverError(rw, err)
 		return
 	}
-  
-}
-
-func (app *application) salvar(rw http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		rw.Header().Set("Allow", "POST")
-		app.clientError(rw, http.StatusMethodNotAllowed)
-		return
-	}
-
-	title := r.FormValue("title")
-	content := r.FormValue("content")
-  done := false
-  
-  _, err := app.snippets.Insert(title, content, done)
-	if err != nil {
-		app.serverError(rw, err)
-		return
-	}
-
-	http.Redirect(rw, r, "/", http.StatusSeeOther)
 }
 
 func (app *application) excluir(rw http.ResponseWriter, r *http.Request) {
@@ -105,6 +103,31 @@ func (app *application) excluir(rw http.ResponseWriter, r *http.Request) {
 	}
   
   _, err = app.snippets.Delete(id)
+	if err != nil {
+		app.serverError(rw, err)
+		return
+	}
+
+	http.Redirect(rw, r, "/", http.StatusSeeOther)
+}
+
+func (app *application) editarTarefa(rw http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		rw.Header().Set("Allow", "POST")
+		app.clientError(rw, http.StatusMethodNotAllowed)
+		return
+	}
+
+  id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	if err != nil || id < 1 {
+		app.notFound(rw)
+		return
+	}
+
+	title := r.FormValue("title")
+	content := r.FormValue("content")
+  
+  _, err = app.snippets.Edit(id, title, content)
 	if err != nil {
 		app.serverError(rw, err)
 		return

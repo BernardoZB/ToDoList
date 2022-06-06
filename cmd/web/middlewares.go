@@ -7,8 +7,7 @@ func secureHeaders(next http.Handler) http.Handler{
     w.Header().Set("X-XSS-Protection", "1-; mode=block")    
     w.Header().Set("X-Frame-Options", "deny")   
     
-    next.ServeHTTP(w,r)
-    
+    next.ServeHTTP(w,r) 
   })
 }
 
