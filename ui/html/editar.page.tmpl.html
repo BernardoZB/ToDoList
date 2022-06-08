@@ -1,13 +1,13 @@
 {{template "base" .}}
-{{define "title"}} A fazer {{.ID}} {{end}}
+{{define "title"}} Editar Tarefa {{end}}
 
 {{define "body"}}
   <div class="snippet">
     <div class="metadata">
       <form  action="/editarValidate?id={{.ID}}" method="post">
-        <input class="inputentrar" type="text" name="title" value="{{.Title}}">
+        <input class="input" type="text" name="title" value="{{.Title}}">
         <br><br>
-        <textarea class="inputentrar" name="content" style="white-space: pre-wrap">{{.Content}}</textarea>
+        <textarea class="input" name="content" style="white-space: pre-wrap">{{.Content}}</textarea>
         <input type="submit" class="button" name="submit" value="Salvar">
       </form>
     </div>
